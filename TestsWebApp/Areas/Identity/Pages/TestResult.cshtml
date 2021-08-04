@@ -1,0 +1,16 @@
+﻿@page
+@model TestsWebApp.Areas.Identity.Pages.TestResultModel
+@{
+    ViewData["Title"] = Model.SelectedTest.Name + " result";
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<p class="text-justify">
+    @Model.SelectedTest.Description
+</p>
+
+<h5>Score: @Model.Score%</h5>
+
+<a asp-area="Identity" asp-page="/Tests"><input type="button" class="btn btn-primary" value="Back"/></a>
+

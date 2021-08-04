@@ -1,0 +1,37 @@
+﻿@page
+@model TestsWebApp.Areas.Identity.Pages.TestsModel
+@{
+    ViewData["Title"] = "User Tests";
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <table class="table table-borderless table-responsive">
+            @foreach (var t in Model.Tests)
+            {
+
+                <tr>
+                    <td>
+                        <span class="d-inline-block color details font-weight-bold" style="margin:50px 50px 0px 0px">@t.test.Name</span>
+                        <span class="d-inline-block">
+                            <a asp-area="Identity" asp-page="/TestDetail" asp-route-id=@t.test.ID>
+                                <input type="button" class="btn btn-sm btn-block btn-primary color details font-weight-bold" style="font-size:large" value="Start"/>
+         
+                            </a>
+                        </span>
+                        @if(@t.isCompleted)
+                        {
+                            <span class="d-inline-block">
+                                <a asp-area="Identity" asp-page="/TestResult" asp-route-id=@t.test.ID>
+                                    <input type="button" class="btn btn-sm btn-block btn-primary color details font-weight-bold" style="font-size:large" value="Result"/>
+                                </a>
+                            </span>
+                       } 
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

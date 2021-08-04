@@ -1,0 +1,21 @@
+﻿@page
+@model TestsWebApp.Areas.Identity.Pages.TestDetailModel
+@{
+    ViewData["Title"] = Model.SelectedTest.Name;
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<p class="text-justify">
+    @Model.SelectedTest.Description
+</p>
+
+<form method="post">
+    <div class="form-check">
+        <input hidden asp-for="SelectedTest.ID" class="form-control" />
+        <input type="checkbox" class="form-check-input" asp-for="@Model.IsChecked">
+        <label class="form-check-label" for="exampleCheck1">I agree to start</label>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-primary">Proceed</button>
+</form>

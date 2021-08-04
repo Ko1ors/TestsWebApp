@@ -1,0 +1,39 @@
+﻿@page
+@model TestsWebApp.Areas.Identity.Pages.TestStartModel
+@{
+    ViewData["Title"] = Model.TestName;
+    ViewData["QuestionName"] = Model.Question.Name;
+}
+
+<h4>@ViewData["Title"]</h4>
+<h5>@ViewData["QuestionName"]</h5>
+
+<div class="row justify-content-center">
+    <div>
+       <p class="text-justify">
+            @Model.Question.Name: @Model.Question.Description
+       </p>
+        <form method="post">
+            @foreach (var answer in Model.Question.Answers)
+            {
+                <div class="form-check ">
+                    <input class="form-check-input" type="radio" asp-for="SelectedAnswer" value="@answer.ID">
+                    <label class="form-check-label">
+                        @answer.Description
+                    </label>
+                </div>
+            }
+            <br />
+                <input class="btn btn-primary" type="submit" disabled />
+            </form>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $('input[type="radio"]').click(function () {
+        $('input[type="submit"]').removeAttr('disabled');
+    });
+</script>
